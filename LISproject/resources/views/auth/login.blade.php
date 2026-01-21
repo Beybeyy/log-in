@@ -44,8 +44,9 @@
             align-items: center;
         }
 
-        .welcome-image {
+        .welcome-logo{
             width: 260px;
+            margin: 0 auto 20px;
         }
 
         .welcome-title {
@@ -88,14 +89,26 @@
             box-sizing: border-box; /* IMPORTANT */
 }
 
-        .remember {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start; /* keep it on the left */
-            gap: 6px;
-            font-size: 13px;
-            margin-bottom: 15px;
+       .remember {
+                display: flex;             
+                align-items: center;       
+                gap: 6px;                 
+                font-size: 13px;
+                margin-bottom: 15px;
         }
+
+        .remember input[type="checkbox"] {
+            width: 16px;               
+            height: 16px;
+            margin: 0;                 
+            vertical-align: middle;    
+        }
+
+      .remember label {
+        margin: 0;                
+        line-height: 1.2;         
+    }
+
 
         .login-btn {
             width: 100%;
@@ -150,7 +163,10 @@
         <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" alt="DepEd Matatag Logo">
+                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
+                alt="DepEd Matatag Logo"
+                class="welcome-logo">
+
 
                 <h1 class="welcome-title">
                     WELCOME TO<br>
