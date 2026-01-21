@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Learner Information System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background-color: #ffffff;
+        }
+
+        /* NAVBAR */
+        .top-nav {
+            background-color: #0b3c78;
+            padding: 18px 0;
+            text-align: center;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+        }
+
+        /* MAIN LAYOUT */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 70px 100px;
+        }
+
+        .left-content {
+            max-width: 60%;
+        }
+
+        .welcome-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .welcome-image {
+            width: 260px;
+        }
+
+        .welcome-title {
+            font-size: 52px;
+            line-height: 1.3;
+            color: #0b3c78;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 15px;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        /* LOGIN CARD */
+        .login-card {
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(to bottom, #0b3c78, #7a102a);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .login-card input,
+        .login-card select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 15px;
+            font-size: 14px;
+            box-sizing: border-box; /* IMPORTANT */
+}
+
+        .remember {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* keep it on the left */
+            gap: 6px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #0a6ddf;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .forgot {
+            display: center;
+            align-items:center;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+
+            .welcome-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="top-nav">
+        <a href="{{ url('/') }}">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main-container">
+
+        <!-- LEFT SIDE -->
+        <div class="left-content">
+            <div class="welcome-wrapper">
+                <img src="{{ asset('images/deped_matatag_logo.png') }}" class="welcome-image">
+
+                <h1 class="welcome-title">
+                    WELCOME TO<br>
+                    LEARNER INFORMATION<br>
+                    SYSTEM
+                </h1>
+            </div>
+
+            <p class="description">
+                A digital platform used by schools to organize, track, and manage
+                student-related data in one place. It helps make school operations
+                smoother and reduces manual work.
+            </p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div class="login-card">
+            <h2>Login</h2>
+
+            <form method="POST" action="{{ route('login') }}">
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <select name="user_type">
+                    <option value="">User Type</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Principal">Principal</option>
+                    <option value="SDO/EPS">SDO/EPS</option>
+                </select>
+
+                <div class="remember">
+                    <input type="checkbox" name="remember">
+                    <label>Remember me</label>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+
+
+                    <a href="{{ route('password.request') }}" class="forgot">
+                        Forgot Password ?
+                    </a>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

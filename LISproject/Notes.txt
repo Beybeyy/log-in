@@ -1,0 +1,46 @@
+LIS Project 2026
+
+MySQL 8.0 Command Line Client password : LISProject2026
+
+for command prompt
+
+cd Desktop\LIS-Project
+cd xampp\htdocs\LISproject
+
+for edit
+notepad resources\views\layouts\app.blade.php
+notepad resources\views\auth\login.blade.php
+notepad resources\views\pages\home.blade.php
+notepad resources\views\auth\register.blade.php
+
+If Something Doesn't Look Right:
+
+Clear cache:
+php artisan view:clear
+php artisan cache:clear
+
+Check if files saved:
+dir resources\views\layouts\app.blade.php
+
+Local Hosting
+http://localhost:8000/
+
+
+Important note for Laravel
+
+Apache → http://localhost:8090
+
+Laravel dev server → http://127.0.0.1:8000 (via php artisan serve)
+
+They are separate, both are correct.
+
+Quick checklist
+
+✅ Listen 8090
+
+✅ ServerName localhost:8090
+
+🔁 Apache restarted
+
+🌐 Opened correct port in browser
+

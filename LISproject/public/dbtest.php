@@ -1,0 +1,1 @@
+<?php try { $conn = new mysqli('127.0.0.1', 'root', '', 'lis_db'); echo "? Database Connected!^^<br^^>Database: lis_db exists!"; $conn->close(); } catch (Exception $e) { echo "? Error: " . $e->getMessage(); } ?> 
