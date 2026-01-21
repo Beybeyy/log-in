@@ -124,7 +124,7 @@
 
             <div class="register-body">
                 <form method="POST" action="#">
-                    @csrf
+                   
 
                     <div class="form-row">
                         <div class="form-group">
