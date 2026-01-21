@@ -124,7 +124,25 @@
         .login-btn:hover {
             opacity: 0.9;
         }
-    
+        
+        .register-btn {
+            display: block;          
+            width: 95%;             
+            padding: 10px;           
+            border-radius: 10px;     
+            border: none;
+            background-color: #0a6ddf; 
+            color: white;
+            font-size: 15px;         
+            text-align: center;      
+            text-decoration: none;   
+            margin-top: 10px;        
+            cursor: pointer;    
+        }
+
+        .register-btn:hover {
+                opacity: 0.9;
+            }
 
         .forgot {
             display: center;
