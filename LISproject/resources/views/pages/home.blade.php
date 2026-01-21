@@ -132,7 +132,7 @@
             </p>
 
             <!-- CONNECTS TO LOGIN PAGE -->
-            <a href="{{ route('login') }}" class="login-btn">
+            <a href="../auth/login.blade.php" class="login-btn">
                 Login
             </a>
 
