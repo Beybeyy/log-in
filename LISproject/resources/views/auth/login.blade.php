@@ -221,12 +221,12 @@
                     required
                 >
 
-                <select name="user_type">
+                <!-- <select name="user_type">
                     <option value="">User Type</option>
                     <option value="Teacher">Teacher</option>
                     <option value="Principal">Principal</option>
                     <option value="SDO/EPS">SDO/EPS</option>
-                </select>
+                </select> -->
 
                 <div class="remember">
                     <input type="checkbox" name="remember">
