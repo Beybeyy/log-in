@@ -113,7 +113,6 @@
         .login-btn {
             width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
             border-radius: 10px;
             border: none;
             background-color: #0a6ddf;
@@ -125,11 +124,12 @@
         .login-btn:hover {
             opacity: 0.9;
         }
+    
 
         .forgot {
             display: center;
             align-items:center;
-            margin-top: 60px;
+            margin-top: 30px;
             font-size: 13px;
             color: #fff;
             text-decoration: underline;
@@ -153,7 +153,7 @@
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="{{ route('home') }}">Home</a>
+        <a href="{{ url('/') }}">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </div>
@@ -164,7 +164,7 @@
         <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png"
+                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
                 alt="DepEd Matatag Logo"
                 class="welcome-logo">
 
@@ -217,11 +217,11 @@
 
                 <button type="submit" class="login-btn">Login</button>
 
-
-                    <a href="{{ route('password.request') }}" class="forgot">
+            </form>
+               <a href="register.php" class="register-btn">Register</a>
+               <a href="{{ route('password.request') }}" class="forgot">
                         Forgot Password ?
                     </a>
-            </form>
         </div>
 
     </div>
