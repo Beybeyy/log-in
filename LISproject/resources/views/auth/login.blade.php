@@ -57,7 +57,7 @@
 
         .description {
             margin-top: 20px;
-            font-size: 15px;
+            font-size: 20px;
             max-width: 650px;
             line-height: 1.6;
         }
@@ -113,6 +113,7 @@
         .login-btn {
             width: 100%;
             padding: 10px;
+            margin-bottom: 10px;
             border-radius: 10px;
             border: none;
             background-color: #0a6ddf;
@@ -128,7 +129,7 @@
         .forgot {
             display: center;
             align-items:center;
-            margin-top: 30px;
+            margin-top: 60px;
             font-size: 13px;
             color: #fff;
             text-decoration: underline;
@@ -152,7 +153,7 @@
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="{{ url('/') }}">Home</a>
+        <a href="{{ route('home') }}">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </div>
@@ -163,7 +164,7 @@
         <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
+                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png"
                 alt="DepEd Matatag Logo"
                 class="welcome-logo">
 
