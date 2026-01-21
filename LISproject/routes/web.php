@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 // This makes {{ route('login') }} work
 Route::get('/login', function () {
     return view('login'); // Ensure your login file is named login.blade.php
