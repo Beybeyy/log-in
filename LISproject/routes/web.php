@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home'); // This must match the name of your home.blade.php
+    return view('home');
 })->name('home');
 
 // This makes {{ route('login') }} work
