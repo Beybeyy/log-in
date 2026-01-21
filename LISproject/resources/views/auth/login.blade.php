@@ -150,7 +150,7 @@
         <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-                <img src="{{ asset('images/deped_matatag_logo.png') }}" class="welcome-image">
+                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" alt="DepEd Matatag Logo">
 
                 <h1 class="welcome-title">
                     WELCOME TO<br>
