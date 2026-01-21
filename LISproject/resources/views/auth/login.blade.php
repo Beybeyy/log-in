@@ -236,7 +236,7 @@
                 <button type="submit" class="login-btn">Login</button>
 
             </form>
-               <a href="register.php" class="register-btn">Register</a>
+               <a href="register.blade.php" class="register-btn">Register</a>
                <a href="{{ route('password.request') }}" class="forgot">
                         Forgot Password ?
                     </a>
