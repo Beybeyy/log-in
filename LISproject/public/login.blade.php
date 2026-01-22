@@ -205,7 +205,7 @@
         <div class="login-card">
             <h2>Login</h2>
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="login_process.php">
 
                 <input
                     type="email"
