@@ -98,6 +98,12 @@
                 text-align: center;
             }
         }
+            .welcome-logo{
+                width: 300px;
+                margin: 0 auto 20px;
+            }
+
+
     </style>
 </head>
 
@@ -115,9 +121,9 @@
         <div class="left-content">
 
             <div class="welcome-wrapper">
-            <img src= "images/deped_matatag_logo.png" 
-            alt="DepEd Matatag Logo" 
-            class="welcome-logo">
+            <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
+                alt="DepEd Matatag Logo" 
+                class="welcome-logo">
 
                 <h1 class="welcome-title">
                     WELCOME TO <br>
