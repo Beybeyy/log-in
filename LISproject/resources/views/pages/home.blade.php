@@ -139,13 +139,53 @@
             </p>
 
             <!-- CONNECTS TO LOGIN PAGE -->
-            <a href="http://localhost/log-in/LISproject/public/login.blade.php"  class="login-btn">
+            <a href="http://localhost/log-in/LISproject/public/login.blade.php"  class="login-btn" id="loginBtn">
                 Login
             </a>
 
         </div>
     </div>
-
+        <script>
+    document.getElementById('loginBtn').addEventListener('click', function(e) {
+        e.preventDefault(); // Stop immediate navigation
+        
+        const button = this;
+        const originalText = button.innerHTML;
+        const href = button.getAttribute('href');
+        
+        // 1. Add click animation class
+        button.classList.add('clicked');
+        
+        // 2. Change to loading text with dots animation
+        button.innerHTML = 'Loading';
+        
+        let dots = 0;
+        const loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            button.innerHTML = 'Loading' + '.'.repeat(dots);
+        }, 300);
+        
+        // 3. Wait 800ms (0.8 seconds) for loading animation
+        setTimeout(() => {
+            // Clear the loading dots animation
+            clearInterval(loadingInterval);
+            
+            // 4. Show "Redirecting..." text
+            button.innerHTML = '✓ Redirecting...';
+            button.style.background = 'linear-gradient(to right, #2ecc71, #27ae60)';
+            
+            // 5. Optional: Fade out the whole page
+            document.body.style.opacity = '0.8';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            // 6. Wait 400ms more then redirect
+            setTimeout(() => {
+                window.location.href = href;
+            }, 400);
+            
+        }, 800); // Loading animation duration
+    });
+</script>
 </body>
 
 </html>
