@@ -173,7 +173,7 @@
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+        <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a> 
     </div>
@@ -245,6 +245,6 @@
         </div>
 
     </div>
-
+    
 </body>
 </html>
