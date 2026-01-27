@@ -139,7 +139,7 @@
             </p>
 
             <!-- CONNECTS TO LOGIN PAGE -->
-            <a href="../public/login.blade.php" class="login-btn">
+            <a href="http://localhost/log-in/LISproject/public/login.blade.php"  class="login-btn">
                 Login
             </a>
 
