@@ -214,6 +214,7 @@
                     name="email"
                     placeholder="Email address"
                     required
+                    autocomplete="off"
                 >
 
                 <input
@@ -221,6 +222,7 @@
                     name="password"
                     placeholder="Password"
                     required
+                    autocomplete="off"
                 >
 
                 <!-- <select name="user_type">
