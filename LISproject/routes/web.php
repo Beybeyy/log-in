@@ -7,9 +7,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/register', function () {
+Route::get('/', function (){return view ('about');});
+
+/*Route::get('/register', function () {
     return view('auth.register');
-});
+});*/
 
 // This makes {{ route('login') }} work
 Route::get('/login', function () {

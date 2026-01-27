@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Learner Information System</title>
-
+    
     <style>
-        body {
+    body {
             margin: 0;
             font-family: "Times New Roman", serif;
             background-color: #ffffff;
@@ -45,7 +45,7 @@
         }
 
         .welcome-logo{
-            width: 260px;
+            width: 290px;
             margin: 0 auto 20px;
         }
 
@@ -166,14 +166,16 @@
             }
         }
     </style>
+
 </head>
+
 <body>
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="../pages/home.blade.php">Home</a>
+        <a href="{{ url('/') }}">Home</a>
         <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="#">Contact</a> 
     </div>
 
     <!-- MAIN -->
@@ -182,15 +184,15 @@
         <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-                <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
-                alt="DepEd Matatag Logo"
+            <img src= "images/deped_matatag_logo.png" 
+                alt="DepEd Matatag Logo" 
                 class="welcome-logo">
 
 
                 <h1 class="welcome-title">
                     WELCOME TO<br>
-                    LEARNER INFORMATION<br>
-                    SYSTEM
+                    LEARNER INFORMATION SYSTEM<br>
+                    
                 </h1>
             </div>
 

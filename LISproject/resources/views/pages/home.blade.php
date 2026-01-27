@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,14 +35,14 @@
             padding: 80px 100px;
         }
 
-        .left-content {
+        /*.left-content {
             max-width: 60%;
-        }
+        }*/
 
         .welcome-wrapper {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 140px;
         }
 
         .welcome-image {
@@ -57,9 +58,10 @@
         }
 
         .description {
-            margin-top: 20px;
-            font-size: 15px;
-            max-width: 650px;
+            margin-top: 10px;
+            margin-left: 295px;
+            font-size: 20px;
+            max-width: 700px;
             line-height: 1.6;
         }
 
@@ -98,12 +100,13 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="#">Home</a>
-        <a href="#">About</a> 
+        <a href="{{ route('home') }}">Home</a>
+        <a href="{{ route('about') }}">About</a>
         <a href="#">Contact</a>
     </div>
 
@@ -112,16 +115,14 @@
         <div class="left-content">
 
             <div class="welcome-wrapper">
-                <img 
-                    src="{{ asset('images/deped_matatag_logo.png') }}" 
-                    alt="DepEd Matatag Logo" 
-                    class="welcome-image"
-                >
+            <img src= "images/deped_matatag_logo.png" 
+            alt="DepEd Matatag Logo" 
+            class="welcome-logo">
 
                 <h1 class="welcome-title">
-                    WELCOME TO<br>
-                    LEARNER INFORMATION<br>
-                    SYSTEM
+                    WELCOME TO <br>
+                    LEARNERS INFORMATION SYSTEM <br>
+                    
                 </h1>
             </div>
 
@@ -132,7 +133,7 @@
             </p>
 
             <!-- CONNECTS TO LOGIN PAGE -->
-            <a href="../auth/login.blade.php" class="login-btn">
+            <a href="../public/login.blade.php" class="login-btn">
                 Login
             </a>
 
@@ -140,4 +141,5 @@
     </div>
 
 </body>
+
 </html>
