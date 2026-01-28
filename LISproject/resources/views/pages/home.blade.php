@@ -11,13 +11,37 @@
             margin: 0;
             font-family: "Times New Roman", serif;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
         .top-nav {
             background-color: #0b3c78;
             padding: 18px 0;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        /* Left Brand Side */
+        .nav-brand {
+            text-align: left;
+            line-height: 1.2;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-brand small {
+            font-weight: normal;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .top-nav a {
@@ -25,6 +49,10 @@
             text-decoration: none;
             margin: 0 20px;
             font-size: 16px;
+        }
+
+        .top-nav a:hover {
+            text-decoration: underline;
         }
 
         /* MAIN */
@@ -111,9 +139,16 @@
 
     <!-- NAVBAR -->
     <div class="top-nav">
-        <a href="{{ route('home') }}">Home</a>
-        <a href="{{ route('about') }}">About</a>
-        <a href="#">Contact</a>
+        <div class="nav-brand">
+            Department of Education<br>
+            <small>Learning Information System</small>
+        </div>
+       
+        <div class="nav-links">
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+            <a href="{{ route('about') }}">About</a>
+            <a href="#">Contact</a>
+            </div>    
     </div>
 
     <!-- MAIN CONTENT -->
