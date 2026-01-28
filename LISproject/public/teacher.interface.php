@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -7,7 +6,7 @@ $inactive = 600;
 
 if (!isset($_SESSION['email'])) {
     // User not logged in
-    header("Location: login.php?message=not_logged_in");
+    header("Location: login.blade.php?message=not_logged_in");
     exit();
 }
 
@@ -16,7 +15,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     // Last request was more than $inactive ago
     session_unset();     // Unset session variables
     session_destroy();   // Destroy session
-    header("Location: login.php?message=session_expired");
+    header("Location: login.blade.php?message=session_expired");
     exit();
 }
 
@@ -436,7 +435,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 }
  
     // Auto logout after 10 seconds of inactivity
-    let inactivityTime = 600000; // 10,000ms = 10 seconds
+    let inactivityTime = 10000; // 10,000ms = 10 seconds
     let inactivityTimer;
 
     function resetTimer() {

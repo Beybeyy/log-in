@@ -1,3 +1,31 @@
+<?php
+$message = '';
+if (isset($_GET['message'])) {
+    switch($_GET['message']) {
+        case 'session_expired':
+            $message = '⏰ Session expired. Please log in again.';
+            $messageType = 'error';
+            break;
+        case 'not_logged_in':
+            $message = '⚠️ You must log in first.';
+            $messageType = 'error';
+            break;
+        case 'logged_out':
+            $message = '✅ You have logged out successfully.';
+            $messageType = 'success';
+            break;
+        case 'invalid_email':
+            $message = '❌ Invalid email address!';
+            $messageType = 'error';
+            break;
+        case 'invalid_password':
+            $message = '❌ Invalid password!';
+            $messageType = 'error';
+            break;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,9 +179,44 @@
             .main-container { flex-direction: column; text-align: center; padding: 40px 20px; }
             .welcome-wrapper { flex-direction: column; }
         }
+        #toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            z-index: 9999;
+            opacity: 0;
+            animation: fadein 0.5s forwards, fadeout 0.5s 3s forwards;
+        }
+
+        #toast.success { background-color: green; }
+        #toast.error { background-color: red; }
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeout {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
     </style>
 </head>
 <body>
+                 <?php if(!empty($message)): ?>
+                <div id="toast" class="<?= $messageType ?>">
+                    <?= $message ?>
+                </div>
+            <?php endif; ?>
+
 
 <!-- NAVBAR -->
     <nav class="top-nav">
@@ -221,7 +284,15 @@
             // Toggle between open eye and eye-slash
             eyeIcon.classList.toggle('fa-eye');
             eyeIcon.classList.toggle('fa-eye-slash');
+
+                    const toast = document.getElementById('toast');
+            if (toast) {
+                setTimeout(() => {
+                    toast.remove();
+                }, 2000); // remove after fade out
+            }
         });
+   
     </script>
 </body>
 </html>
