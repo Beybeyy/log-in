@@ -111,6 +111,70 @@
         /* MODULE DISPLAY */
         .module-section { display: none; }
         .module-section.active-section { display: block; }
+
+                .logout-btn {
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #c9302c;
+        }
+
+        /* Modal overlay */
+        .modal {
+            display: none; /* hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* Modal content box */
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Buttons inside modal */
+        .modal-buttons button {
+            padding: 8px 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #confirmLogout {
+            background-color: #d9534f;
+            color: #fff;
+        }
+        #confirmLogout:hover {
+            background-color: #c9302c;
+        }
+
+        #cancelLogout {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        #cancelLogout:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
@@ -127,13 +191,23 @@
                     <a href="#">Profile</a>
                     <a href="#">About</a>
                     <a href="#">Settings</a>
-                    <a href="#">Logout</a>
+                    <<button id="logoutBtn" class="logout-btn">Logout</button>
                     
                     
                 </div>
             </div>
         </div>
     </div>
+            <!-- Confirmation Modal -->
+        <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+            <button id="confirmLogout">Yes</button>
+            <button id="cancelLogout">No</button>
+            </div>
+        </div>
+        </div>
 
     <div class="header-profile">
         <div class="user-avatar"></div>
@@ -306,6 +380,34 @@
                 document.getElementById("burgerDropdown").style.display = "none";
             }
         }
+        
+            // Get elements
+    var logoutBtn = document.getElementById("logoutBtn");
+    var modal = document.getElementById("logoutModal");
+    var confirmBtn = document.getElementById("confirmLogout");
+    var cancelBtn = document.getElementById("cancelLogout");
+
+    // Show modal on logout button click
+    logoutBtn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Cancel logout
+    cancelBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Confirm logout
+    confirmBtn.onclick = function() {
+        window.location.href = "logout.php"; // redirect to logout
+    }
+
+    // Close modal if click outside content
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+}
     </script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-// Start session if you want to track login
 session_start();
 
 // Database connection
@@ -33,14 +32,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password_input === $user['password']) {
             // Login successful
             $_SESSION['email'] = $user['email'];
-            echo "<script>alert('Login successful! Welcome, " . $user['email'] . "');</script>";
+            $_SESSION['user_id'] = $user['id'];       // optional: track user
+            $_SESSION['LAST_ACTIVITY'] = time();     // track activity for inactivity logout
+
+            // Show alert and redirect
+            echo "<script>
+                alert('Login successful! Welcome, " . $user['email'] . "');
+                window.location.href = 'teacher.interface.php';
+            </script>";
+            exit(); // stop further execution
+
         } else {
             // Invalid password
-            echo "<script>alert('Invalid password!'); window.history.back();</script>";
+            echo "<script>
+                alert('Invalid password!');
+                window.history.back();
+            </script>";
+            exit();
         }
     } else {
         // Invalid email
-        echo "<script>alert('Invalid email address!'); window.history.back();</script>";
+        echo "<script>
+            alert('Invalid email address!');
+            window.history.back();
+        </script>";
+        exit();
     }
 
     $stmt->close();
