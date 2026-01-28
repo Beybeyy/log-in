@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About - DeTED LIS')
+@section('title', 'About - DepED LIS')
 
 @section('content')
 <h1>About DepED LIS</h1>

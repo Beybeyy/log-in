@@ -61,6 +61,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 80px 100px;
+            max-width: 1200px;
         }
 
         /*.left-content {
@@ -70,7 +71,8 @@
         .welcome-wrapper {
             display: flex;
             align-items: center;
-            gap: 140px;
+            gap: 40px;
+            
         }
 
         .welcome-image {
@@ -87,7 +89,7 @@
 
         .description {
             margin-top: 10px;
-            margin-left: 295px;
+            margin-left:340px;
             font-size: 20px;
             max-width: 700px;
             line-height: 1.6;
@@ -96,6 +98,7 @@
         /* LOGIN BUTTON */
         .login-btn {
             margin-top: 25px;
+            margin-left: 80px;
             display: inline-block;
             padding: 8px 40px;
             font-size: 14px;
@@ -146,8 +149,8 @@
        
         <div class="nav-links">
             <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
-            <a href="{{ route('about') }}">About</a>
-            <a href="#">Contact</a>
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
             </div>    
     </div>
 

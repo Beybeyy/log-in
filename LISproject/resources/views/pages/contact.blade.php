@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact - DeTED LIS')
+@section('title', 'Contact - DepED LIS')
 
 @section('content')
 <h1>Contact Us</h1>
