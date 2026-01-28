@@ -200,6 +200,24 @@ $_SESSION['LAST_ACTIVITY'] = time();
         #cancelLogout:hover {
             background-color: #5a6268;
         }
+        /* Make it look like dropdown link but red on hover */
+        .logout-link {
+            display: block;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .logout-link:hover {
+            background-color: #f1f1f1; /* optional, same as other links */
+            color: var(--deped-red); /* text turns red on hover */
+            font-weight: bold; /* optional */
+        }
+
+        
     </style>
 </head>
 <body>
@@ -216,7 +234,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     <a href="#">Profile</a>
                     <a href="#">About</a>
                     <a href="#">Settings</a>
-                    <<button id="logoutBtn" class="logout-btn">Logout</button>
+                    <a href="#" id="logoutBtn" class="logout-link">Log out</a>
                     
                     
                 </div>
