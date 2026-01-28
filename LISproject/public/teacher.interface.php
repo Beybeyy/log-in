@@ -1,3 +1,29 @@
+
+<?php
+session_start();
+
+// Set session timeout in seconds (example: 10 minutes = 600s)
+$inactive = 600; 
+
+if (!isset($_SESSION['email'])) {
+    // User not logged in
+    header("Location: login.php?message=not_logged_in");
+    exit();
+}
+
+// Check if session started and last activity is set
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $inactive)) {
+    // Last request was more than $inactive ago
+    session_unset();     // Unset session variables
+    session_destroy();   // Destroy session
+    header("Location: login.php?message=session_expired");
+    exit();
+}
+
+// Update last activity time stamp
+$_SESSION['LAST_ACTIVITY'] = time();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -408,6 +434,29 @@
             modal.style.display = "none";
         }
 }
+ 
+    // Auto logout after 10 seconds of inactivity
+    let inactivityTime = 600000; // 10,000ms = 10 seconds
+    let inactivityTimer;
+
+    function resetTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(logout, inactivityTime);
+    }
+
+    function logout() {
+        // Redirect to logout.php, which destroys session and goes to login.blade.php
+        window.location.href = "logout.php";
+    }
+
+    // Reset timer on user actions
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    document.onclick = resetTimer;
+    document.onscroll = resetTimer;
+    
+
     </script>
 </body>
 </html>

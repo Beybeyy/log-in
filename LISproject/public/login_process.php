@@ -17,8 +17,8 @@ if ($conn->connect_error) {
 
 // Only process if form submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email_input = $_POST['email'];
-    $password_input = $_POST['password'];
+    $email_input = trim($_POST['email']);
+    $password_input = trim($_POST['password']);
 
     // Check user
     $sql = "SELECT * FROM login WHERE email=? LIMIT 1";
@@ -29,33 +29,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
+
+        // Check password (plain text for now; you can hash later)
         if ($password_input === $user['password']) {
             // Login successful
             $_SESSION['email'] = $user['email'];
-            $_SESSION['user_id'] = $user['id'];       // optional: track user
-            $_SESSION['LAST_ACTIVITY'] = time();     // track activity for inactivity logout
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['LAST_ACTIVITY'] = time(); // track last activity for session timeout
 
-            // Show alert and redirect
-            echo "<script>
-                alert('Login successful! Welcome, " . $user['email'] . "');
-                window.location.href = 'teacher.interface.php';
-            </script>";
-            exit(); // stop further execution
+            // Redirect to dashboard
+            header("Location: teacher.interface.php");
+            exit();
 
         } else {
             // Invalid password
-            echo "<script>
-                alert('Invalid password!');
-                window.history.back();
-            </script>";
+            header("Location: login.blade.php?message=invalid_password");
             exit();
         }
+
     } else {
         // Invalid email
-        echo "<script>
-            alert('Invalid email address!');
-            window.history.back();
-        </script>";
+        header("Location: login.blade.php?message=invalid_email");
         exit();
     }
 
