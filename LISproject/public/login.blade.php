@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Learner Information System</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
-    body {
+        body {
             margin: 0;
             font-family: "Times New Roman", serif;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         /* NAVBAR */
@@ -17,6 +20,7 @@
             background-color: #0b3c78;
             padding: 18px 0;
             text-align: center;
+            
         }
 
         .top-nav a {
@@ -45,7 +49,7 @@
         }
 
         .welcome-logo{
-            width: 290px;
+            width: 300px;
             margin: 0 auto 20px;
         }
 
@@ -67,48 +71,57 @@
             width: 350px;
             padding: 30px;
             border-radius: 15px;
-            background: linear-gradient(to bottom, #0b3c78, #7a102a);
+            background: linear-gradient(to bottom, #1a3c6d, #7a102a);
             color: white;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            flex-shrink: 0; /* Keeps the card size stable */
         }
 
         .login-card h2 {
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 50px;
             font-weight: normal;
+        }
+
+        /* FORM ELEMENTS */
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+            position: relative; /* Essential for eye positioning */
         }
 
         .login-card input,
         .login-card select {
             width: 100%;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px 15px;
+            padding-right: 45px; /* Space for the eye */
+            border-radius: 12px;
             border: none;
-            margin-bottom: 15px;
             font-size: 14px;
-            box-sizing: border-box; /* IMPORTANT */
-}
-
-       .remember {
-                display: flex;             
-                align-items: center;       
-                gap: 6px;                 
-                font-size: 13px;
-                margin-bottom: 15px;
+            box-sizing: border-box;
+            background-color: white;
+            display: block;
         }
 
-        .remember input[type="checkbox"] {
-            width: 16px;               
-            height: 16px;
-            margin: 0;                 
-            vertical-align: middle;    
+        /* EYE ICON STYLING */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
         }
 
-      .remember label {
-        margin: 0;                
-        line-height: 1.2;         
-    }
-
+        /*.remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin: 15px 0;
+        }*/
 
         .login-btn {
             width: 100%;
@@ -117,136 +130,96 @@
             border: none;
             background-color: #0a6ddf;
             color: white;
-            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-        
-        /*.register-btn {
-            display: block;          
-            width: 95%;             
-            padding: 10px;           
-            border-radius: 10px;     
-            border: none;
-            background-color: #0a6ddf; 
-            color: white;
-            font-size: 15px;         
-            text-align: center;      
-            text-decoration: none;   
-            margin-top: 10px;        
-            cursor: pointer;    
-        }
-
-        .register-btn:hover {
-                opacity: 0.9;
-            } */
+        .login-btn:hover { background-color: #0056b3; }
 
         .forgot {
-            display: center;
-            align-items:center;
-            margin-top: 30px;
-            font-size: 13px;
+            display: block;
+            text-align: center;
+            margin-top: 50px;
             color: #fff;
+            font-size: 14px;
             text-decoration: underline;
         }
 
-        @media (max-width: 900px) {
-            .main-container {
-                flex-direction: column;
-                gap: 40px;
-                padding: 40px 20px;
-            }
-
-            .welcome-wrapper {
-                flex-direction: column;
-                text-align: center;
-            }
+        /* Responsive Fix */
+        @media (max-width: 850px) {
+            .main-container { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .welcome-wrapper { flex-direction: column; }
         }
     </style>
-
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <div class="top-nav">
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+<!-- NAVBAR -->
+    <nav class="top-nav">
+    <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a> 
-    </div>
+    </nav>
 
-    <!-- MAIN -->
-    <div class="main-container">
+<!-- MAIN -->
+    <main class="main-container">
 
-        <!-- LEFT SIDE -->
+    <!-- LEFT SIDE -->
         <div class="left-content">
             <div class="welcome-wrapper">
-            <img src= "images/deped_matatag_logo.png" 
-                alt="DepEd Matatag Logo" 
-                class="welcome-logo">
-
-
-                <h1 class="welcome-title">
-                    WELCOME TO<br>
-                    LEARNER INFORMATION SYSTEM<br>
-                    
-                </h1>
+                <img src="images/deped_matatag_logo.png" alt="Logo" class="welcome-logo">
+                <h1 class="welcome-title">WELCOME TO <br> LEARNER INFORMATION SYSTEM</h1>
             </div>
-
-            <p class="description">
-                A digital platform used by schools to organize, track, and manage
-                student-related data in one place. It helps make school operations
-                smoother and reduces manual work.
-            </p>
+            <p class="description">A digital platform used by schools to organize, track, and manage student-related data in one place.</p>
         </div>
 
         <!-- LOGIN FORM -->
         <div class="login-card">
             <h2>Login</h2>
-
-            <form method="POST" action="login_process.php">
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email address"
-                    required
+            <form action="login_process.php" method="POST">
+                
+                <div class="form-group">
+                    <input 
+                    ype="email" 
+                    name="email" 
+                    placeholder="Email address" required
                     autocomplete="off"
-                >
-
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    required
-                    autocomplete="off"
-                >
-
-                <!-- <select name="user_type">
-                    <option value="">User Type</option>
-                    <option value="Teacher">Teacher</option>
-                    <option value="Principal">Principal</option>
-                    <option value="SDO/EPS">SDO/EPS</option>
-                </select> -->
-
-                <div class="remember">
-                    <input type="checkbox" name="remember">
-                    <label>Remember me</label>
+                    >
                 </div>
 
+                <div class="form-group">
+                    <input 
+                    type="password" 
+                    name="password"
+                    placeholder="Password" required
+                    autocomplete="off">
+                    <i class="fa-regular fa-eye toggle-password" id="eyeIcon"></i>
+                </div>
+
+                <!--<div class="remember">
+                    <input type="checkbox" id="rem" name="remember">
+                    <label for="rem">Remember me</label>
+                </div> -->
+
                 <button type="submit" class="login-btn">Login</button>
-
+                <a href="#" class="forgot">Forgot Password?</a>
             </form>
-               <!-- <a href="register.blade.php" class="register-btn">Register</a> -->
-               <a href="{{ route('password.request') }}" class="forgot">
-                        Forgot Password ?
-                    </a>
         </div>
+    </main>
 
-    </div>
-    
+    <script>
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        eyeIcon.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            
+            // Toggle between open eye and eye-slash
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
 </html>
