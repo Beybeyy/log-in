@@ -231,7 +231,8 @@
                     type="email" 
                     name="email" 
                     placeholder="Enter your email" 
-                    required>
+                    required
+                    autocomplete="off">
 
                    <!-- {{-- Error message display --}}
                     @if ($errors->has('email'))-->
