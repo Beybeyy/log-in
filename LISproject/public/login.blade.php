@@ -198,11 +198,11 @@ body { margin:0; font-family:"Times New Roman", serif; background:#fff; overflow
             </div>
 
             <button type="submit" class="login-btn">Login</button>
-            <a href="#" class="forgot">Forgot Password?</a>
+            <a href="forgot_password.php" class="forgot">Forgot Password?</a>
         </form>
     </div>
 </main>
-
+    
 <script>
 const passwordInput = document.getElementById('password');
 const eyeIcon = document.getElementById('eyeIcon');
