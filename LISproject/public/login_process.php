@@ -30,25 +30,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        // Check password (plain text for now; you can hash later)
+        // Check password (plain text for now)
         if ($password_input === $user['password']) {
             // Login successful
             $_SESSION['email'] = $user['email'];
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['LAST_ACTIVITY'] = time(); // track last activity for session timeout
+            $_SESSION['LAST_ACTIVITY'] = time(); // track session activity
+
+            // ✅ Set toast message for dashboard
+            $_SESSION['message'] = '🎉 You are logged in successfully!';
+            $_SESSION['messageType'] = 'success';
 
             // Redirect to dashboard
             header("Location: teacher.interface.php");
             exit();
 
         } else {
-            // Invalid password
+            // Invalid password → redirect back with error
             header("Location: login.blade.php?message=invalid_password");
             exit();
         }
 
     } else {
-        // Invalid email
+        // Invalid email → redirect back with error
         header("Location: login.blade.php?message=invalid_email");
         exit();
     }

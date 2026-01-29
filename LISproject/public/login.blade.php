@@ -1,7 +1,11 @@
 <?php
+session_start(); // Make sure session is started
+
 $message = '';
+$messageType = '';
+
 if (isset($_GET['message'])) {
-    switch($_GET['message']) {
+    switch ($_GET['message']) {
         case 'session_expired':
             $message = '⏰ Session expired. Please log in again.';
             $messageType = 'error';
@@ -12,6 +16,10 @@ if (isset($_GET['message'])) {
             break;
         case 'logged_out':
             $message = '✅ You have logged out successfully.';
+            $messageType = 'success';
+            break;
+        case 'logged_in':
+            $message = '🎉 You are logged in successfully!';
             $messageType = 'success';
             break;
         case 'invalid_email':

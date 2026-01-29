@@ -4,23 +4,32 @@ session_start();
 // Set session timeout in seconds (example: 10 minutes = 600s)
 $inactive = 600; 
 
+// Check if user is logged in
 if (!isset($_SESSION['email'])) {
-    // User not logged in
     header("Location: login.blade.php?message=not_logged_in");
     exit();
 }
 
-// Check if session started and last activity is set
+// Session timeout check
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $inactive)) {
-    // Last request was more than $inactive ago
-    session_unset();     // Unset session variables
-    session_destroy();   // Destroy session
+    session_unset();
+    session_destroy();
     header("Location: login.blade.php?message=session_expired");
     exit();
 }
 
 // Update last activity time stamp
 $_SESSION['LAST_ACTIVITY'] = time();
+
+// ===== Toast Message =====
+$message = '';
+$messageType = '';
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $messageType = $_SESSION['messageType'];
+    unset($_SESSION['message']);
+    unset($_SESSION['messageType']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -216,12 +225,41 @@ $_SESSION['LAST_ACTIVITY'] = time();
             color: var(--deped-red); /* text turns red on hover */
             font-weight: bold; /* optional */
         }
+      
+        #toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0,0,0,0.85);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            z-index: 9999;
+            opacity: 0;
+            animation: fadein 0.5s forwards, fadeout 0.5s 3s forwards;
+        }
+        #toast.success { background-color: green; }
+        #toast.error { background-color: red; }
+
+        @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeout { from { opacity: 1; } to { opacity: 0; } }
 
         
     </style>
 </head>
 <body>
-
+       
+        <!-- Toast -->
+        <?php if(!empty($message)): ?>
+            <div id="toast" class="<?= $messageType ?>"><?= $message ?></div>
+            <script>
+                const toast = document.getElementById('toast');
+                setTimeout(() => { if(toast) toast.remove(); }, 3500);
+            </script>
+<?php endif; ?>
     <div class="top-nav">
         <div>Department of Education<br><small>Learning Information System</small></div>
         <div class="nav-links">
@@ -466,14 +504,22 @@ $_SESSION['LAST_ACTIVITY'] = time();
         window.location.href = "logout.php";
     }
 
-    // Reset timer on user actions
-    window.onload = resetTimer;
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-    document.onclick = resetTimer;
-    document.onscroll = resetTimer;
-    
+            // Reset timer on user actions
+            window.onload = resetTimer;
+            document.onmousemove = resetTimer;
+            document.onkeypress = resetTimer;
+            document.onclick = resetTimer;
+            document.onscroll = resetTimer;
+            
+            <?php if(!empty($_SESSION['message'])): ?>
+            const toast = document.createElement('div');
+            toast.id = 'toast';
+            toast.className = '<?= $_SESSION['messageType'] ?>';
+            toast.innerText = '<?= $_SESSION['message'] ?>';
+            document.body.appendChild(toast);
 
+            setTimeout(() => { if(toast) toast.remove(); }, 300);
+        <?php unset($_SESSION['message'], $_SESSION['messageType']); endif; ?>
     </script>
 </body>
 </html>
