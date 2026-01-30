@@ -168,9 +168,9 @@ session_start();
         <small>Learning Information System</small>
     </div>
     <div class="nav-links">
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
     </div>
 </nav>
 
@@ -210,7 +210,7 @@ session_start();
                 <button type="submit" class="btn-submit">Submit</button>
             </form>
 
-            <a href="http://localhost/log-in/LISproject/public/login.blade.php" class="back-link">
+            <a href="http://10.10.8.218:8080/log-in/LISproject/public/login.blade.php" class="back-link">
                 <span>&#8249;</span> back to login
             </a>
         </div>

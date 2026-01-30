@@ -8,7 +8,7 @@ $db_password = "";
 $dbname = "ls";
 $port = 3307;
 
-$conn = new mysqli($servername, $db_username, $db_password, $dbname, $port);
+$conn = new mysqli($servername, $db_username, $db_password, $dbname, $port3306);
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

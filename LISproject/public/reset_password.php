@@ -11,7 +11,7 @@ if (!$token) {
 }
 
 // ✅ Database connection (no external file needed)
-$conn = new mysqli("127.0.0.1", "root", "", "ls", 3307);
+$conn = new mysqli("127.0.0.1", "root", "", "ls", 3306);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
@@ -210,9 +210,9 @@ $email = $token_data['email'];
             <small>Learning Information System</small>
         </div>
         <div class="nav-links">
-            <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
-            <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
-            <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
+            <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+            <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+            <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
         </div>
     </nav>
 
@@ -253,7 +253,7 @@ $email = $token_data['email'];
                 <button type="submit" class="btn-submit">Update Password</button>
             </form>
 
-            <a href="login.blade.php" class="back-link">
+            <a href="http://10.10.8.218:8080/log-in/LISproject/public/login.blade.php" class="back-link">
                 <span>&#8249;</span> back to login
             </a>
         </div>

@@ -151,9 +151,10 @@ body { margin:0; font-family:"Times New Roman", serif; background:#fff; overflow
         <small>Learning Information System</small>
     </div>
     <div class="nav-links">
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
-        <a href="http://localhost/log-in/LISproject/resources/views/pages/.blade.php">Contact</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+        <a href="http://10.10.8.218:8080/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
+
     </div>
 </nav>
 

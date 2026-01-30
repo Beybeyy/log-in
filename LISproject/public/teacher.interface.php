@@ -497,7 +497,7 @@ if (isset($_SESSION['error'])) {
 }
  
     // Auto logout after 10 seconds of inactivity
-     let inactivityTime = 10000; // 10,000ms = 10 seconds
+     let inactivityTime = 60000; // 10,000ms = 10 seconds
      let inactivityTimer;
 
     function resetTimer() {

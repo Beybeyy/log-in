@@ -2,7 +2,7 @@
 session_start();
 
 // Connect to database
-$conn = new mysqli("127.0.0.1", "root", "", "ls", 3307);
+$conn = new mysqli("127.0.0.1", "root", "", "ls", 3306);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }

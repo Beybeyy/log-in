@@ -9,7 +9,7 @@ require 'PHPMailer/SMTP.php';
 require 'PHPMailer/Exception.php';
 
 // Database connection
-$conn = new mysqli("127.0.0.1", "root", "", "ls", 3307);
+$conn = new mysqli("127.0.0.1", "root", "", "ls", 3306);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 4️⃣ Create reset link
-    $link = "http://localhost/log-in/LISproject/public/reset_password.php?token=$token";
+    $link = "http://10.10.8.218:8080/log-in/LISproject/public/reset_password.php?token=$token";
 
     // 5️⃣ Send email
     try {

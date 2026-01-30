@@ -159,7 +159,7 @@
         <div class="left-content">
 
             <div class="welcome-wrapper">
-            <img src="http://localhost/log-in/LISproject/public/images/deped_matatag_logo.png" 
+            <img src="http://10.10.8.218:8080/log-in/LISproject/public/images/deped_matatag_logo.png" 
                 alt="DepEd Matatag Logo" 
                 class="welcome-logo">
 
@@ -177,7 +177,7 @@
             </p>
 
             <!-- CONNECTS TO LOGIN PAGE -->
-            <a href="http://localhost/log-in/LISproject/public/login.blade.php"  class="login-btn" id="loginBtn">
+            <a href="http://10.10.8.218:8080/log-in/LISproject/public/login.blade.php"  class="login-btn" id="loginBtn">
                 Login
             </a>
 
