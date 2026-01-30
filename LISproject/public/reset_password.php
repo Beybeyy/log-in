@@ -11,7 +11,7 @@ if (!$token) {
 }
 
 // ✅ Database connection (no external file needed)
-$conn = new mysqli("127.0.0.1", "root", "", "ls", 3306);
+$conn = new mysqli("127.0.0.1", "root", "", "ls", 3307);
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
@@ -46,6 +46,7 @@ $email = $token_data['email'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIS | Reset Password</title>
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -53,6 +54,48 @@ $email = $token_data['email'];
             background-color: #ffffff;
             overflow-x: hidden;
         }
+
+        /* NAVBAR */
+        .top-nav {
+            background-color: #0b3c78;
+            padding: 18px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .nav-brand {
+            text-align: left;
+            line-height: 1.2;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-brand small {
+            font-weight: normal;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+        }
+
+        .top-nav a:hover {
+            text-decoration: underline;
+        }
+
+
         .container {
             display: flex;
             justify-content: center;
@@ -60,6 +103,8 @@ $email = $token_data['email'];
             height: 80vh;
             padding: 20px;
         }
+
+        /* Reset Card */
         .card {
             width: 100%;
             max-width: 450px;
@@ -70,27 +115,41 @@ $email = $token_data['email'];
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .card-header {
-            padding: 40px 20px 20px;
+            padding: 30px 20px;
             text-align: center;
             color: white;
         }
         .icon-circle {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border: 3px solid white;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            font-weight: bold;
+            margin-bottom: 15px;
         }
         .card-body {
-            background-color: #dcdcdc;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #d3d3d3; /* Light grey from image */
+            padding: 20px 25px;
+            border-radius: 5px;
             text-align: center;
         }
+
+        .instruction-text {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* Input Fields */
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
         input[type="password"] {
             width: 100%;
             padding: 12px;
@@ -100,11 +159,19 @@ $email = $token_data['email'];
             margin-bottom: 10px;
             font-size: 14px;
         }
-        .error-text {
-            color: #d93025;
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-align: left;
+        /* Feedback Messages */
+        .error-text { 
+            color: #d93025; 
+            font-size: 13px; 
+            margin-top: 5px; 
+            display: none; 
+        }
+
+        .success-text { 
+            color: #2e7d32; 
+            font-size: 14px; 
+            margin-bottom: 15px; 
+        
         }
         .btn-submit {
             width: 100%;
@@ -136,17 +203,40 @@ $email = $token_data['email'];
 </head>
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="top-nav">
+        <div class="nav-brand">
+            Department of Education<br>
+            <small>Learning Information System</small>
+        </div>
+        <div class="nav-links">
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+            <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
+        </div>
+    </nav>
+
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <div class="icon-circle">🔒</div>
+            <div class="icon-circle">🔒︎</div>
             <h2>Reset Password</h2>
         </div>
         <div class="card-body">
-            <form action="update_password.php" method="POST">
-                <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+        <p class="instruction-text">Please enter your new password below and confirm it to update your account.</p>
+            
+        <form id="resetForm" action="update_password.php" method="POST">
+                    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token'] ?? ''); ?>">
 
-                <input type="password" name="password" placeholder="Enter new password" required autocomplete="off">
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="Enter new password" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="confirm_password" placeholder="Confirm new password" required>
+                        <div id="match-error" class="error-text">password not matched !</div>
+                    </div>
+
 
                 <?php if (isset($_SESSION['error'])): ?>
                     <div class="error-text"><?php echo $_SESSION['error']; ?></div>
@@ -170,5 +260,26 @@ $email = $token_data['email'];
     </div>
 </div>
 
+<script>
+        const form = document.getElementById('resetForm');
+        const pass = document.getElementById('password');
+        const confirmPass = document.getElementById('confirm_password');
+        const errorMsg = document.getElementById('match-error');
+
+        form.onsubmit = function(e) {
+            if (pass.value !== confirmPass.value) {
+                e.preventDefault(); // Stop form from sending
+                errorMsg.style.display = 'block';
+                confirmPass.style.borderColor = '#d93025';
+                return false;
+            }
+        };
+
+        // Hide error when user starts typing again
+        confirmPass.oninput = function() {
+            errorMsg.style.display = 'none';
+            confirmPass.style.borderColor = '#ccc';
+        };
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ $servername = "localhost";
 $db_username = "root";
 $db_password = "";
 $dbname = "ls";
-$port = 3306;
+$port = 3307;
 
 $conn = new mysqli($servername, $db_username, $db_password, $dbname, $port);
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
