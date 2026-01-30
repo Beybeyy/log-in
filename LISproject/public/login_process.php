@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $result->fetch_assoc();
 
     // ❌ Password incorrect (plain text version)
-    if ($password_input !== $user['password']) {
-        header("Location: login.blade.php?message=login_failed");
-        exit();
+    if (!password_verify($password_input, $user['password'])) {
+    header("Location: login.blade.php?message=login_failed");
+    exit();
     }
 
     // ✅ LOGIN SUCCESS
