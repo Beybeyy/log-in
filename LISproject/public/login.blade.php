@@ -1,36 +1,17 @@
 <?php
-session_start(); // Make sure session is started
+session_start();
 
 $message = '';
 $messageType = '';
 
-if (isset($_GET['message'])) {
-    switch ($_GET['message']) {
-        case 'session_expired':
-            $message = '⏰ Session expired. Please log in again.';
-            $messageType = 'error';
-            break;
-        case 'not_logged_in':
-            $message = '⚠️ You must log in first.';
-            $messageType = 'error';
-            break;
-        case 'logged_out':
-            $message = '✅ You have logged out successfully.';
-            $messageType = 'success';
-            break;
-        case 'logged_in':
-            $message = '🎉 You are logged in successfully!';
-            $messageType = 'success';
-            break;
-        case 'invalid_email':
-            $message = '❌ Invalid email address!';
-            $messageType = 'error';
-            break;
-        case 'invalid_password':
-            $message = '❌ Invalid password!';
-            $messageType = 'error';
-            break;
-    }
+if (isset($_SESSION['error'])) {
+    $message = $_SESSION['error'];
+    $messageType = 'error';
+    unset($_SESSION['error']);
+} elseif (isset($_SESSION['success'])) {
+    $message = $_SESSION['success'];
+    $messageType = 'success';
+    unset($_SESSION['success']);
 }
 ?>
 
