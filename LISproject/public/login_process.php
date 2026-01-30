@@ -30,10 +30,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $result->fetch_assoc();
 
-    if (!password_verify($password_input, $user['password'])) {
-        $_SESSION['error'] = '❌ Invalid email or password';
-        header("Location: login.blade.php");
-        exit();
+    // Check if password is hashed (for old accounts, fallback to plain)
+    if (password_get_info($user['password'])['algo'] !== 0) {
+        // password is hashed
+        if (!password_verify($password_input, $user['password'])) {
+            $_SESSION['error'] = '❌ Invalid email or password';
+            header("Location: login.blade.php");
+            exit();
+        }
+    } else {
+        // password is plain text (old accounts)
+        if ($password_input !== $user['password']) {
+            $_SESSION['error'] = '❌ Invalid email or password';
+            header("Location: login.blade.php");
+            exit();
+        }
     }
 
     // Login success

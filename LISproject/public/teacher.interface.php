@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-// Set session timeout in seconds (example: 10 minutes = 600s)
-$inactive = 600; 
+// ===== SESSION TIMEOUT =====
+$inactive = 600; // 10 minutes
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {
@@ -18,17 +18,23 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     exit();
 }
 
-// Update last activity time stamp
+// Update last activity timestamp
 $_SESSION['LAST_ACTIVITY'] = time();
 
-// ===== Toast Message =====
+// ===== TOAST MESSAGES =====
 $message = '';
 $messageType = '';
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-    $messageType = $_SESSION['messageType'];
-    unset($_SESSION['message']);
-    unset($_SESSION['messageType']);
+
+if (isset($_SESSION['success'])) {
+    $message = $_SESSION['success'];
+    $messageType = 'success';
+    unset($_SESSION['success']);
+}
+
+if (isset($_SESSION['error'])) {
+    $message = $_SESSION['error'];
+    $messageType = 'error';
+    unset($_SESSION['error']);
 }
 ?>
 
@@ -252,14 +258,14 @@ if (isset($_SESSION['message'])) {
 </head>
 <body>
        
-        <!-- Toast -->
-        <?php if(!empty($message)): ?>
-            <div id="toast" class="<?= $messageType ?>"><?= $message ?></div>
-            <script>
-                const toast = document.getElementById('toast');
-                setTimeout(() => { if(toast) toast.remove(); }, 3500);
-            </script>
-<?php endif; ?>
+            <?php if(!empty($message)): ?>
+        <div id="toast" class="<?= $messageType ?>"><?= $message ?></div>
+        <script>
+            const toast = document.getElementById('toast');
+            setTimeout(() => { if(toast) toast.remove(); }, 3500);
+        </script>
+    <?php endif; ?>
+
     <div class="top-nav">
         <div>Department of Education<br><small>Learning Information System</small></div>
         <div class="nav-links">

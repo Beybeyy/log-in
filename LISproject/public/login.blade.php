@@ -138,18 +138,11 @@ body { margin:0; font-family:"Times New Roman", serif; background:#fff; overflow
 <?php if(!empty($message)): ?>
     <div id="toast" class="<?= $messageType ?>"><?= $message ?></div>
     <script>
-        // Remove 'message' from URL after showing
-        if(window.history.replaceState){
-            const url = new URL(window.location);
-            url.searchParams.delete('message');
-            window.history.replaceState({}, document.title, url);
-        }
-
-        // Remove toast after animation
         const toast = document.getElementById('toast');
-        setTimeout(() => { if(toast) toast.remove(); }, 3500);
+        setTimeout(() => { if(toast) toast.remove(); }, 2000);
     </script>
 <?php endif; ?>
+
 
 <!-- NAVBAR -->
 <nav class="top-nav">
