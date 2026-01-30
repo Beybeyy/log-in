@@ -1,3 +1,7 @@
+<?php
+// forgot_password.php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +29,6 @@
             color: white;
         }
 
-        /* Left Brand Side */
         .nav-brand {
             text-align: left;
             line-height: 1.2;
@@ -55,20 +58,6 @@
         .top-nav a:hover {
             text-decoration: underline;
         }
-        /* Navbar */
-        .navbar {
-            background-color: #0d519d;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-family: 'Playfair Display', serif;
-        }
 
         /* Container & Card */
         .container {
@@ -82,24 +71,17 @@
         .card {
             width: 100%;
             max-width: 450px;
-            background-color: #083e77; 
-            border: 10px solid #083e77; 
+            background-color: #083e77;
+            border: 10px solid #083e77;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        /* Top Blue Header */
         .card-header {
             padding: 40px 20px 20px;
             text-align: center;
             color: white;
-        }
-
-        .card-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: normal;
-            margin-top: 5px;
         }
 
         .icon-circle {
@@ -115,7 +97,7 @@
         }
 
         .card-body {
-            background-color: #dcdcdc; /* Light grey area */
+            background-color: #dcdcdc;
             padding: 20px;
             border-radius: 8px;
             text-align: center;
@@ -128,7 +110,6 @@
             line-height: 1.5;
         }
 
-        /* Form Elements */
         input[type="email"] {
             width: 100%;
             padding: 12px;
@@ -148,7 +129,7 @@
 
         .btn-submit {
             width: 100%;
-            background-color: #1a73e8; /* Blue button from image */
+            background-color: #1a73e8;
             color: white;
             padding: 12px;
             border: none;
@@ -175,80 +156,66 @@
             font-size: 18px;
             vertical-align: middle;
         }
-
-         /* RESPONSIVE */
-         @media (max-width: 900px) {
-            .main-container {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-
-            .left-content {
-                max-width: 100%;
-            }
-
-            .welcome-wrapper {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-            .welcome-logo{
-                width: 300px;
-                margin: 0 auto 20px;
-            }
-        </style>
-
+    </style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="top-nav">
-            <div class="nav-brand">
-                Department of Education<br>
-                <small>Learning Information System</small>
-            </div>
-        
-            <div class="nav-links">
-                <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
-                <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
-                <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
-            </div>    
-    </nav>
+<!-- NAVBAR -->
+<nav class="top-nav">
+    <div class="nav-brand">
+        Department of Education<br>
+        <small>Learning Information System</small>
+    </div>
+    <div class="nav-links">
+        <a href="http://localhost/log-in/LISproject/resources/views/pages/home.blade.php">Home</a>
+        <a href="http://localhost/log-in/LISproject/resources/views/pages/about.blade.php">About</a>
+        <a href="http://localhost/log-in/LISproject/resources/views/pages/contact.blade.php">Contact</a>
+    </div>
+</nav>
 
-    <div class="container">
-            <div class="card">
-                <div class="card-header">
-                <div class="icon-circle">!</div>
-                <h2>Forget Password</h2>
-            </div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="icon-circle">!</div>
+            <h2>Forgot Password</h2>
+        </div>
 
-            <div class="card-body">
-            <p>Enter your email address and will send you a link to reset your password.</p>
+        <div class="card-body">
+            <p>Enter your email address and we will send you a link to reset your password.</p>
 
             <form action="send_reset_email.php" method="POST">
 
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="Enter your email" 
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
                     required
                     autocomplete="off">
 
-                   <!-- {{-- Error message display --}}
-                    @if ($errors->has('email'))-->
-                        <div class="error-text">We cannot find your email</div>
-                    <!--@endif -->
+                <!-- ERROR MESSAGE BELOW INPUT -->
+                <?php if (isset($_SESSION['error'])): ?>
+                    <div class="error-text"><?php echo $_SESSION['error']; ?></div>
+                    <?php unset($_SESSION['error']); ?>
+                <?php endif; ?>
 
-                <button type="submit"class="btn-submit">Submit</button>
+                <!-- SUCCESS MESSAGE BELOW INPUT -->
+                <?php if (isset($_SESSION['success'])): ?>
+                    <div style="color: green; margin-bottom:15px; text-align:left;">
+                        <?php echo $_SESSION['success']; ?>
+                    </div>
+                    <?php unset($_SESSION['success']); ?>
+                <?php endif; ?>
+
+                <button type="submit" class="btn-submit">Submit</button>
             </form>
-            
+
             <a href="http://localhost/log-in/LISproject/public/login.blade.php" class="back-link">
-                    <span>&#8249;</span> back to login 
+                <span>&#8249;</span> back to login
             </a>
-
-            </div>
-
         </div>
     </div>
+</div>
+
 </body>
 </html>
